@@ -32,11 +32,11 @@ class Config:
         self.img_scaling_factor = 1.0
 
         # number of ROIs at once
-        self.num_rois = 4
+        self.num_rois = 64
 
         # stride at the RPN (this depends on the network configuration)
         self.rpn_stride = 16
-        
+
         # normally set to false but change for testing purpose
         # self.balanced_classes = False
         self.balanced_classes = True
@@ -60,15 +60,26 @@ class Config:
         # your class_mapping should go like this {'class1': 0, 'class2': 1, 'class3': 2, 'bg':3}
         # normally should be this, but we change temporary for testing
         # need change id augmentation to do this properly
-        self.class_mapping = {'id_front': 0, 'id_back': 1, 'res_front': 2, 'res_back': 3, 'passport': 4, 'driving': 5, 'bg': 6}
-        # self.class_mapping = {'passport': 0, 'id_back': 1, 'res_front': 2, 'res_back': 3, 'id_front': 4, 'driving': 5, 'bg': 6}
-        # try fix
-        # self.class_mapping = {'res_front': 0, 'id_back': 1, 'passport': 2, 'res_back': 3, 'id_front': 4, 'driving': 5, 'bg': 6}
-        # id_front -> res_front
-        # res_front -> passport
-        # passport -> id_front
-        
-        self.model_path = None
+
+        self.class_mapping = {'Aortic enlargement': 0,
+                              'Atelectasis': 1,
+                              'Calcification': 2,
+                              'Cardiomegaly': 3,
+                              'Consolidation': 4,
+                              'ILD': 5,
+                              'Infiltration': 6,
+                              'Lung Opacity' : 7,
+                              'Nodule/Mass' : 8,
+                              'Other lesion' : 9,
+                              'Pleural effusion' : 10,
+                              'Pleural thickening' : 11,
+                              'Pneumothorax' : 12,
+                              'Pulmonary fibrosis' : 13,
+                              'bg' : 14,
+                             }
+
+
+        self.model_path = "../input/frcnn/vgg_frcnn-test-10.hdf5"
         self.training_annotation = "/content/drive/My Drive/Work/Manager_one/data/FRCNN/data-big/augmented-colab/annot/annot-augmented.csv'"
         self.cfg_save_path = None
         self.classes_count = None
