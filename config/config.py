@@ -32,10 +32,10 @@ class Config:
         self.img_scaling_factor = 1.0
 
         # number of ROIs at once
-        self.num_rois = 64
+        self.num_rois = 8
 
         # stride at the RPN (this depends on the network configuration)
-        self.rpn_stride = 16
+        self.rpn_stride = 8
 
         # normally set to false but change for testing purpose
         # self.balanced_classes = False
