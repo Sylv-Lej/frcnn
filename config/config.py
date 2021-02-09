@@ -10,14 +10,14 @@ class Config:
         self.network = 'vgg'
 
         # Setting for data augmentation
-        self.use_horizontal_flips = False
-        self.use_vertical_flips = False
-        self.rot_90 = False
+        self.use_horizontal_flips = True
+        self.use_vertical_flips = True
+        self.rot_90 = True
 
         # Anchor box scales
         # Note that if im_size is smaller, anchor_box_scales should be scaled
         # Original anchor_box_scales in the paper is [128, 256, 512]
-        self.anchor_box_scales = [32, 64, 128]
+        self.anchor_box_scales = [16, 32, 64, 128]
 
         # Anchor box ratios
         self.anchor_box_ratios = [[1, 1], [1. / math.sqrt(2), 2. / math.sqrt(2)],
@@ -32,10 +32,10 @@ class Config:
         self.img_scaling_factor = 1.0
 
         # number of ROIs at once
-        self.num_rois = 8
+        self.num_rois = 4
 
         # stride at the RPN (this depends on the network configuration)
-        self.rpn_stride = 8
+        self.rpn_stride = 16
 
         # normally set to false but change for testing purpose
         # self.balanced_classes = False
