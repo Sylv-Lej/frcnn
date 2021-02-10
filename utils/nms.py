@@ -126,6 +126,7 @@ def calc_rpn(C, img_data, width, height, resized_width, resized_height, img_leng
 
                             # we set the anchor to positive if the IOU is >0.7 (it does not matter if there was another better box, it just indicates overlap)
                             if curr_iou > C.rpn_max_overlap:
+                                print("pos IOU {}".format(curr_iou))
                                 bbox_type = 'pos'
                                 num_anchors_for_bbox[bbox_num] += 1
                                 # we update the regression layer target if this IOU is the best for the current (x,y) and anchor position
@@ -135,12 +136,14 @@ def calc_rpn(C, img_data, width, height, resized_width, resized_height, img_leng
 
                             # if the IOU is >0.3 and <0.7, it is ambiguous and no included in the objective
                             if C.rpn_min_overlap < curr_iou < C.rpn_max_overlap:
+                                print("neutral IOU {}".format(curr_iou))
                                 # gray zone between neg and pos
                                 if bbox_type != 'pos':
                                     bbox_type = 'neutral'
+                            print(curr_iou)
 
                     # turn on or off outputs depending on IOUs
-                    print(bbox_type)
+
                     if bbox_type == 'neg':
                         y_is_box_valid[jy, ix, anchor_ratio_idx + n_anchratios * anchor_size_idx] = 1
                         y_rpn_overlap[jy, ix, anchor_ratio_idx + n_anchratios * anchor_size_idx] = 0
