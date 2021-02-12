@@ -44,6 +44,7 @@ def calc_iou(R, img_data, C, class_mapping):
     (resized_width, resized_height) = get_new_img_size(width, height, C.im_size)
 
     gta = np.zeros((len(bboxes), 4))
+    print("there is {} gt boxes".format(len(bboxes)))
 
     for bbox_num, bbox in enumerate(bboxes):
         # get the GT box coordinates, and resize to account for image resizing
