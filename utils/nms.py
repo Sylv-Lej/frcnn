@@ -204,7 +204,7 @@ def calc_rpn(C, img_data, width, height, resized_width, resized_height, img_leng
 
     y_rpn_cls = np.concatenate([y_is_box_valid, y_rpn_overlap], axis=1)
     y_rpn_regr = np.concatenate([np.repeat(y_rpn_overlap, 4, axis=1), y_rpn_regr], axis=1)
-    print("end of calc RPN")
+
     return np.copy(y_rpn_cls), np.copy(y_rpn_regr), num_pos
 
 
