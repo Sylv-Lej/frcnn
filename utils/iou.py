@@ -44,7 +44,6 @@ def calc_iou(R, img_data, C, class_mapping):
     (resized_width, resized_height) = get_new_img_size(width, height, C.im_size)
 
     gta = np.zeros((len(bboxes), 4))
-    print("there is {} gt boxes".format(len(bboxes)))
 
     for bbox_num, bbox in enumerate(bboxes):
         # get the GT box coordinates, and resize to account for image resizing
@@ -72,12 +71,16 @@ def calc_iou(R, img_data, C, class_mapping):
         best_bbox = -1
         # Iterate through all the ground-truth bboxes to calculate the iou
         for bbox_num in range(len(bboxes)):
+            print("--------")
+            print("IOU bewteen")
+            print("GT Resided x1:{} y1:{} x2:{} y2:{}".format(gta[bbox_num, 0], gta[bbox_num, 2], gta[bbox_num, 1], gta[bbox_num, 3]))
+            print("Proposed x1:{} y1:{} x2:{} y2:{}".format(x1, y1, x2, y2))
+
             curr_iou = iou([gta[bbox_num, 0], gta[bbox_num, 2], gta[bbox_num, 1], gta[bbox_num, 3]], [x1, y1, x2, y2])
 
             # Find out the corresponding ground-truth bbox_num with larget iou
             if curr_iou > best_iou:
                 best_iou = curr_iou
-                print(best_iou)
                 best_bbox = bbox_num
 
         if best_iou < C.classifier_min_overlap:
