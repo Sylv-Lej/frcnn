@@ -77,6 +77,7 @@ def calc_iou(R, img_data, C, class_mapping):
             # Find out the corresponding ground-truth bbox_num with larget iou
             if curr_iou > best_iou:
                 best_iou = curr_iou
+                print(best_iou)
                 best_bbox = bbox_num
 
         if best_iou < C.classifier_min_overlap:
