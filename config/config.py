@@ -35,7 +35,7 @@ class Config:
         self.num_rois = 4
 
         # stride at the RPN (this depends on the network configuration)
-        self.rpn_stride = 8
+        self.rpn_stride = 4
 
         # normally set to false but change for testing purpose
         # self.balanced_classes = False
