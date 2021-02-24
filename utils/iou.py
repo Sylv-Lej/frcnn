@@ -71,13 +71,13 @@ def calc_iou(R, img_data, C, class_mapping):
         best_bbox = -1
         # Iterate through all the ground-truth bboxes to calculate the iou
         for bbox_num in range(len(bboxes)):
-            print("--------")
-            print("IOU bewteen")
-            print("GT Resided x1:{}   y1:{}   x2:{}   y2:{}".format(gta[bbox_num, 0], gta[bbox_num, 2], gta[bbox_num, 1], gta[bbox_num, 3]))
-            print("Proposed   x1:{}   y1:{}   x2:{}   y2:{}".format(x1, y1, x2, y2))
+            # print("--------")
+            # print("IOU bewteen")
+            # print("GT Resided x1:{}   y1:{}   x2:{}   y2:{}".format(gta[bbox_num, 0], gta[bbox_num, 2], gta[bbox_num, 1], gta[bbox_num, 3]))
+            # print("Proposed   x1:{}   y1:{}   x2:{}   y2:{}".format(x1, y1, x2, y2))
 
             curr_iou = iou([gta[bbox_num, 0], gta[bbox_num, 2], gta[bbox_num, 1], gta[bbox_num, 3]], [x1, y1, x2, y2])
-            print("IOU {}".format(curr_iou))
+            # print("IOU {}".format(curr_iou))
             # Find out the corresponding ground-truth bbox_num with larget iou
             if curr_iou > best_iou:
                 best_iou = curr_iou
